@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil Chrome Personnalisée avec Favoris</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+r/8QhF5Z5AYd83w5dge/zBw/r4Jg0z3Ld6d+A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Styles pour les petites Cards (Main Content) */
+        .custom-card {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 10px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .custom-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .custom-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+            width: 100%;
+            padding: 5px;
+            font-size: 0.8rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        /* Styles pour la barre latérale Favoris */
+        .sidebar {
+            height: 100vh; /* Hauteur totale de l'écran */
+            overflow-y: auto; /* Permet le défilement si les favoris sont trop nombreux */
+            background-color: #f8f9fa; /* Couleur de fond légère */
+            padding-top: 15px;
+            border-right: 1px solid #dee2e6; /* Séparateur visuel */
+        }
+        
+        /* Ajustement de l'Accordéon pour ressembler à une arborescence */
+        .accordion-item, .accordion-button {
+            border: none !important;
+            background-color: transparent !important;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #0d6efd; /* Couleur d'accentuation pour le dossier ouvert */
+            box-shadow: none;
+        }
+        .accordion-body {
+            padding: 0 0 0 1rem; /* Décalage pour simuler l'arborescence */
+        }
+        .favorite-link {
+            display: block;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #212529;
+        }
+        .favorite-link:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-2 sidebar d-none d-md-block">
+                <h5 class="text-secondary mb-3"><i class="fas fa-bookmark me-2"></i> Mes Favoris Personnels</h5>
+                
+                <div class="accordion accordion-flush" id="favoritesAccordion">
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDev" aria-expanded="false" aria-controls="collapseDev">
+                                <i class="fas fa-folder me-2"></i> Développement
+                            </button>
+                        </h2>
+                        <div id="collapseDev" class="accordion-collapse collapse" data-bs-parent="#favoritesAccordion">
+                            <div class="accordion-body">
+                                <a href="https://getbootstrap.com/" target="_blank" class="favorite-link">
+                                    <i class="fas fa-file-code me-2"></i> Bootstrap Docs
+                                </a>
+                                <a href="https://github.com/" target="_blank" class="favorite-link">
+                                    <i class="fab fa-github me-2"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+                                <i class="fas fa-folder me-2"></i> Outils Quotidiennes
+                            </button>
+                        </h2>
+                        <div id="collapseTools" class="accordion-collapse collapse" data-bs-parent="#favoritesAccordion">
+                            <div class="accordion-body">
+                                <a href="https://translate.google.com/" target="_blank" class="favorite-link">
+                                    <i class="fas fa-language me-2"></i> Google Traduction
+                                </a>
+                                <a href="https://mail.google.com/" target="_blank" class="favorite-link">
+                                    <i class="fas fa-envelope me-2"></i> Gmail
+                                </a>
+                                <a href="mailto:support@exemple.com" class="favorite-link">
+                                    <i class="fas fa-desktop me-2"></i> Lancer Mail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="https://news.google.com/" target="_blank" class="favorite-link">
+                                <i class="fas fa-newspaper me-2"></i> Actualités
+                            </a>
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-9 main-content">
+                <h1 class="text-center my-4">🚀 Lanceurs Rapides</h1>
+
+                <div class="row justify-content-center">
+                    
+                    <div class="col-auto">
+                        <div class="card custom-card bg-white">
+                            <a href="https://www.google.com" target="_blank">
+                                <span class="card-icon">🔎</span> 
+                                <div>Google</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="card custom-card bg-danger text-white">
+                            <a href="https://www.youtube.com" target="_blank">
+                                <span class="card-icon">▶️</span>
+                                <div>YouTube</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="card custom-card bg-info text-white">
+                            <a href="mailto:support@entreprise.com" target="_blank">
+                                <span class="card-icon">✉️</span>
+                                <div>Nouveau Mail</div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    </div>
+            </div>
+            
+        </div> 
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
