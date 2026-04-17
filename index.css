@@ -1,6 +1,89 @@
-h1 {
-  color: hsl(270, 87%, 33%);
-}
-img {
-  width: 200px;
-}
+ /* --- Styles précédents conservés --- */
+      .custom-card {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 10px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .custom-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .custom-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        font-size: 0.8rem;
+      }
+      .card-icon {
+        font-size: 2rem;
+        margin-bottom: 5px;
+      }
+
+      .sidebar {
+        height: 100vh;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+        padding-top: 15px;
+        border-right: 1px solid #dee2e6;
+      }
+      .favorites-nav {
+        flex-direction: column;
+        padding: 0 10px;
+        user-select: none;
+      }
+
+      /* Style des titres de dossiers (Niveau 1 et 2) */
+      .folder-toggle {
+        font-weight: bold;
+        color: #212529;
+        padding: 8px 0px 4px 0px;
+        margin-top: 5px;
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+      }
+      .folder-toggle:hover {
+        color: #0d6efd;
+      }
+
+      /* Flèche de rotation */
+      .arrow-icon {
+        transition: transform 0.2s;
+        font-size: 0.8rem;
+      }
+      .folder-toggle[aria-expanded="true"] .arrow-icon {
+        transform: rotate(90deg);
+      }
+
+      /* Indentations */
+      .folder-links {
+        list-style: none;
+        padding-left: 0;
+      }
+      .level-1 {
+        padding-left: 20px;
+      } /* Sous le dossier principal */
+      .level-2 {
+        padding-left: 40px;
+      } /* Sous le sous-dossier Projets */
+
+      .nav-link {
+        padding: 5px 10px;
+        color: #212529;
+        border-radius: 0.25rem;
+      }
+      .nav-link:hover {
+        background-color: #e9ecef;
+      }
+    
